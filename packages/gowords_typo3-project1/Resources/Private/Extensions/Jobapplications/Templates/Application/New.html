@@ -1,0 +1,49 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:layout name="Default"/>
+
+<f:section name="content">
+	<f:asset.script identifier="filepond-validate" src="EXT:jobapplications/Resources/Public/Js/Vendor/filepond-plugin-file-validate-type.js" priority="true"/>
+	<f:asset.script identifier="filepond" src="EXT:jobapplications/Resources/Public/Js/Vendor/filepond.js" priority="true"/>
+	<f:asset.css identifier="filepond-css" href="EXT:jobapplications/Resources/Public/Css/Vendor/filepond.css" priority="true"/>
+
+	<f:render arguments="{posting:posting}" partial="Posting/MetaTags"/>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-6">
+			<f:if condition="{posting}">
+				<f:then>
+					<h3>
+						<f:translate arguments="{0: posting.title}" extensionName="jobapplications" key="fe.application.new.title"/>
+					</h3>
+				</f:then>
+				<f:else>
+					<f:translate extensionName="jobapplications" key="fe.application.unsolicited.title"/>
+				</f:else>
+			</f:if>
+
+			<f:flashMessages/>
+			<f:render partial="FormErrors"/>
+			<f:form action="create" arguments="{posting: posting}" enctype="multipart/form-data" id="application-form" name="newApplication" object="{newApplication}">
+				<f:render arguments="{_all}" partial="Application/FormFields"/>
+				<div class="row">
+					<div class="col-4">
+						<button class="btn btn-link px-0" id="application-button-back" onclick="window.history.back()">
+							<f:translate key="fe.application.backlink"/>
+						</button>
+					</div>
+					<div class="col-4 text-center">
+						<f:form.submit class="btn btn-primary mx-auto" id="application-submit" value="{f:translate(key:'fe.application.new.submit')}"/>
+					</div>
+				</div>
+			</f:form>
+		</div>
+		<div class="col"></div>
+	</div>
+	<script>
+		document.getElementById('application-form').addEventListener('submit', function () {
+			document.getElementById('application-submit').disabled = true;
+			document.getElementById('application-button-back').disabled = true;
+		});
+	</script>
+</f:section>
+</html>

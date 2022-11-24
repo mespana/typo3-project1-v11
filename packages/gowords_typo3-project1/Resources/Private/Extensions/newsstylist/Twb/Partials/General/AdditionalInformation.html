@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{settings.show.extraInfo} == '1'">
+  <div class="extra">
+
+	<!-- date -->
+    <f:if condition="{settings.show.extraTime} == '1'">
+        <f:if condition="{settings.show.extraIcons} == '1'">
+	       <i class="fa fa-calendar" aria-hidden="true"></i>
+        </f:if>
+	      <time class="label time" itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'{settings.layout.dateFormat}')}">
+              	<f:format.date format="{settings.layout.dateFormat}">{newsItem.datetime}</f:format.date>
+	      </time>
+    </f:if>
+
+     <!-- author -->
+    <f:if condition="{newsItem.author} && {settings.show.Author} == '1'">
+      <span class="label author">
+      <f:if condition="{settings.show.extraIcons} == '1'">
+	<f:then>
+			<i class="fa fa-user" aria-hidden="true"></i>
+	</f:then>
+	<f:else>
+		|&nbsp;
+	</f:else>
+      </f:if>
+		<f:translate key="author" arguments="{0:newsItem.author}"/>
+      </span>
+    </f:if>
+
+	<!-- category and tags -->
+    <span class="category tags">
+    <f:if condition="{newsItem.firstCategory} && {settings.show.Categories} == '1'">
+          <f:if condition="{settings.show.extraIcons} == '1'">
+		<i class="fa fa-tag" aria-hidden="true"></i>
+          </f:if>
+	  <span class="badge badge-info">{newsItem.firstCategory.title}</span>
+     </f:if>
+
+     <f:if condition="{newsItem.tags} && {settings.show.Tags} == '1'">
+	      <f:if condition="{settings.show.extraIcons} == '1'">
+     	 		<i class="fa fa-tag" aria-hidden="true"></i>
+      	      </f:if>
+		<f:for each="{newsItem.tags}" as="tag">
+			<span class="badge badge-info">{tag.title}</span>
+		</f:for>
+      </f:if>
+    </span>
+  </div>
+</f:if>
+</html>

@@ -1,0 +1,121 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript">
+
+
+##############
+#### PAGE ####
+##############
+page {
+    includeCSS {
+        theme = EXT:gowords_typo3project1/Resources/Public/Scss/Theme/theme.scss
+        css = EXT:gowords_typo3project1/Resources/Public/Css/styles.css 
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+
+    includeJSFooterlibs {
+
+    }
+
+    includeJSFooter {
+        project1_scripts = EXT:gowords_typo3project1/Resources/Public/JavaScript/Dist/scripts.js
+    }
+}
+
+
+## Library_lib.searchbox.ts
+
+lib.headerSearch = USER
+lib.headerSearch {
+     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+     extensionName = IndexedSearch
+     pluginName = Pi2
+     vendorName = TYPO3\CMS
+     switchableControllerActions {
+             Search {
+                   1 = form
+                   2 = search
+             }
+     }
+     features {
+         requireCHashArgumentForActionArguments = 0
+     }
+
+
+     settings =< plugin.tx_indexedsearch.settings
+     settings.targetPid = 27
+}
+
+
+# Configuration for indexedsearch plugin
+
+plugin.tx_indexedsearch {
+  templateFile = EXT:gowords_typo3project1/Resources/Private/Layouts/Page/Default.html
+
+    forwardSearchWordsInResultLink= 0
+    show {
+        rules = 0
+        advancedSearchLink = 0
+    }
+
+    search {
+        rootPidList = 1
+        exactCount = 1
+        defaultFreeIndexUidList >
+        }
+    }
+
+
+  _CSS_DEFAULT_STYLE >
+  _DEFAULT_PI_VARS {
+    results = 10
+  }
+
+  ## Due to a bug in TYPO3 9.5.19 it is necessary to overwrite the language label for the number of search results
+  ## See https://forge.typo3.org/issues/91620
+  _LOCAL_LANG {
+    de {
+      displayResults = Anzeige der Ergebnisse <strong>%1$s bis %2$s</strong> von insgesamt <strong>%3$s</strong>
+    }
+  }
+}
+
+plugin.tx_indexedsearch {
+   view {
+       templateRootPaths {
+           20 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/
+           21 = {$plugin.bootstrap_package.view.templateRootPath}IndexedSearch/
+       }
+       partialRootPaths {
+           20 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/Partials/
+           21 = {$plugin.bootstrap_package.view.partialRootPath}IndexedSearch/
+
+       }
+       layoutRootPaths {
+           20 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/
+           21 = {$plugin.bootstrap_package.view.layoutRootPath}IndexedSearch/
+       }
+   }
+}
+
+
+## Create TypoScript Object
+
+lib.headerSearch_plugin = COA_INT
+lib.headerSearch_plugin {
+  10 < plugin.tx_kesearch_pi1
+
+  10.resultPage = 27
+
+  10.cssFile = EXT:gowords_typo3project1/Resources/Public/Css/styles.css
+
+  10.loadFlexformsFromOtherCE = 191 // Search form plugin UID
+}

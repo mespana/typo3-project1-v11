@@ -1,0 +1,29 @@
+########################
+#### INDEXED SEARCH ####
+########################
+
+## Library_lib.searchbox.ts
+
+lib.headerSearch = USER
+lib.headerSearch {
+      userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+      extensionName = IndexedSearch
+      pluginName = Pi2
+      vendorName = TYPO3\CMS
+      switchableControllerActions {
+              Search {
+                    1 = form
+                    2 = search
+              }
+      }
+      features {
+          requireCHashArgumentForActionArguments = 0
+      }
+
+      view < pluging.tx_indexedsearch.view
+      view.partialRootPaths.21 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/Partials/
+      view.templateRootPaths.21 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/Templates/
+
+      settings =< plugin.tx_indexedsearch.settings
+      settings.targetPid = 27
+}

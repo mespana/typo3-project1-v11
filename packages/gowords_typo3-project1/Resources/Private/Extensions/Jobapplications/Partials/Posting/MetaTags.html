@@ -1,0 +1,11 @@
+<html data-namespace-typo3-fluid="true"
+		xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+		xmlns:jobs="http://typo3.org/ns/ITX/Jobapplications/ViewHelpers">
+
+<jobs:page.header.meta content="{posting.jobDescription -> f:format.stripTags()}" name="og:description"/>
+<jobs:page.header.meta content="{posting.jobDescription -> f:format.stripTags()}" name="description"></jobs:page.header.meta>
+<jobs:page.header.meta content="{posting.title}" name="og:title"/>
+<f:if condition="{posting.listViewImage}">
+	<jobs:page.header.meta content="{f:uri.image(image: posting.listViewImage, absolute: 1)}" name="og:image"/>
+</f:if>
+</html>

@@ -1,0 +1,39 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:layout name="Default"/>
+
+<f:section name="content">
+	<f:render arguments="{posting:posting}" partial="Posting/MetaTags"/>
+	<div class="row">
+		<f:if condition="{posting.detailViewImage}">
+			<f:image class="h-auto w-100 mb-3" src="{posting.detailViewImage.originalResource.publicUrl}"/>
+		</f:if>
+		<div class="col">
+			<div class="row">
+				<button class="btn btn-secondary" onclick="window.history.back()">
+					<f:translate key="fe.posting.show.backlink"/>
+				</button>
+			</div>
+		</div>
+
+		<div class="col-8">
+			<f:flashMessages/>
+			<h3>{posting.title}</h3>
+			<f:render arguments="{posting:posting}" partial="Posting/Properties"/>
+			<div class="row">
+				<div class="col-4"></div>
+				<f:if condition="{settings.applicationsEnabled}">
+					<div class="col-4 text-center">
+						<f:comment><!--Button for going to the application form--></f:comment>
+						<f:link.action action="new" arguments="{posting: posting}" class="btn btn-primary m-auto" controller="Application" pageUid="{settings.applicationFormUid}" pluginName="ApplicationForm">
+							<f:translate key="fe.posting.button.cta"/>
+						</f:link.action>
+					</div>
+				</f:if>
+			</div>
+		</div>
+
+		<div class="col">
+		</div>
+	</div>
+</f:section>
+</html>

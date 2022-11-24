@@ -1,0 +1,18 @@
+{
+  "name": "gowords-typo3-project1",
+  "description": "Wittemaier Bau Website Relaunch",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": "https://www.marianaespana.com",
+  "author": "mariana espana",
+  "version": "1.0.0",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-contrib-imagemin": "^2.0.1"
+  }
+}

@@ -1,0 +1,22 @@
+base: 'https://typo3-project1-v11.ddev.site/'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+rootPageId: 1
+routes:
+  -
+    route: robots.txt
+    type: ''
+    source: ''
+websiteTitle: 'Wittemaier Bau GmbH'

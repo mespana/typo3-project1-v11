@@ -1,0 +1,86 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript">
+
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        file = EXT:gowords_typo3project1/Resources/Public/Images/WittemaierLogo.jpg
+        fileInverted = EXT:gowords_typo3project1/Resources/Public/Images/WittemaierLogo.jpg
+        height = 120
+        width = 120
+        alt = Wittemaier Bau GmbH
+        linktitle = Wittemaier Bau GmbH
+    }
+    favicon {
+        file = EXT:typo3_project1/Resources/Public/Icons/favicon.ico
+    }
+    fluidtemplate {
+        layoutRootPath = EXT:gowords_typo3project1/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:gowords_typo3project1/Resources/Private/Partials/Page/
+        templateRootPath = EXT:gowords_typo3project1/Resources/Private/Templates/Page/
+    }
+}
+
+
+##################
+### EXTENSIONS ###
+##################
+plugin.bootstrap_package {
+    view {
+        layoutRootPath = EXT:gowords_typo3project1/Resources/Private/Layouts/
+        partialRootPath = EXT:gowords_typo3project1/Resources/Private/Partials/
+        templateRootPath = EXT:gowords_typo3project1/Resources/Private/Templates/
+    }
+}
+
+##plugin.tx_indexedsearch {
+  view {
+    partialRootPaths {
+        10 = EXT:indexed_search/Resources/Private/Partials/
+        20 = {$plugin.bootstrap_package.view.partialRootPath}IndexedSearch/
+        21 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/Partials/ 
+        }
+    }
+}
+
+
+
+########################
+### CONTENT ELEMENTS ###
+########################
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:gowords_typo3project1/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:gowords_typo3project1/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:gowords_typo3project1/Resources/Private/Templates/ContentElements/
+    }
+}
+
+#######################
+### JOBAPPLICATIONS ###
+#######################
+
+EXT:gowords_typo3project1/Configuration/TypoScript/constants.typoscript
+
+plugin.tx_jobapplications {
+    view {
+        templateRootPath = EXT:gowords_typo3project1/Resources/Private/Extensions/Jobapplications/Templates/
+        partialRootPath = EXT:gowords_typo3project1/Resources/Private/Extensions/Jobapplications/Partials/
+        layoutRootPath = EXT:gowords_typo3project1/Resources/Private/Extensions/Jobapplications/Layouts/
+        }
+			widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:jobapplications/Resources/Private/Templates/
+    }
+
+################################
+### BOOTSTRAP SCSS CONSTANTS ###
+################################
+plugin.bootstrap_package.settings.scss {
+    primary = #eb3e4a
+    secondary = #013859
+}
+
