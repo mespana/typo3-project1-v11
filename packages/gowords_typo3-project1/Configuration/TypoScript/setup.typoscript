@@ -10,7 +10,8 @@
 page {
     includeCSS {
         theme = EXT:gowords_typo3project1/Resources/Public/Scss/Theme/theme.scss
-        css = EXT:gowords_typo3project1/Resources/Public/Css/styles.css 
+        css = EXT:gowords_typo3project1/Resources/Public/Css/styles.css
+        fontawesome = EXT:gowords_typo3project1/Resources/Public/Fontawesome/css/all.css
     }
 
     includeJSLibs {
@@ -118,4 +119,72 @@ lib.headerSearch_plugin {
   10.cssFile = EXT:gowords_typo3project1/Resources/Public/Css/styles.css
 
   10.loadFlexformsFromOtherCE = 191 // Search form plugin UID
+}
+
+#######################
+### BW_JOBS ###
+#######################
+
+# Form Module
+module.tx_form {
+  settings {
+    yamlConfigurations {
+      EXT:bw_jobs/Configuration/Form/Setup.yaml = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Forms/jobApplication_de.form.yaml
+    }
+  }
+}
+
+# Form Plugin
+plugin.tx_form {
+  settings {
+    yamlConfigurations {
+      EXT:bw_jobs/Configuration/Form/Setup.yaml = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Forms/jobApplication_de.form.yaml
+    }
+  }
+}
+
+#######################
+### BW_JOBS ###
+#######################
+
+  plugin.tx_bwjobs_detail {
+  view {
+    templateRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Templates/
+    templateRootPaths.1 = {$plugin.tx_bwjobs_detail.view.templateRootPath}
+    partialRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Partials/
+    partialRootPaths.1 = {$plugin.tx_bwjobs_detail.view.partialRootPath}
+    layoutRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Layouts/
+    layoutRootPaths.1 = {$plugin.tx_bwjobs_detail.view.layoutRootPath}
+  }
+
+  page.includeCSS.bwJobs = EXT:gowords_typo3project1/Resources/Public/Css/styles.css
+
+
+plugin.tx_seo {
+    config {
+        xmlSitemap {
+            sitemaps {
+                jobs {
+                    provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+                    config {
+                        table = tx_bwjobs_domain_model_jobposition
+                        sortField = date_posted
+                        lastModifiedField = tstamp
+                        pid = 26 # Change this to the pid storing the job positions (same as storagePid)
+                        url {
+                            pageId = 24 # Change this to the pid containing the detail view plugin
+                            fieldToParameterMap {
+                                uid = tx_bwjobs_detail[jobPosition]
+                            }
+                            additionalGetParameters {
+                                tx_bwjobs_detail.controller = Frontend
+                                tx_bwjobs_detail.action = show
+                            }
+                            useCacheHash = 1
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

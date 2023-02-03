@@ -18,15 +18,17 @@
 			"typo3/cms-composer-installers": true
 		},
 		"platform": {
-			"php": "7.4.1"
+			"php": "8.1"
 		},
 		"sort-packages": true
 	},
 	"require": {
+		"php": ">=8.1",
+		"browserwerk/bw_jobs": "^2.2",
 		"dirkpersky/typo3-rte-ckeditor-fontawesome": "^11.5",
+		"dmind/cookieman": "^2.12",
 		"gowords/typo3-project1": "^2.0",
 		"helhum/typo3-console": "^7.0.2",
-		"itx/jobapplications": "^2.1",
 		"typo3/cms-backend": "^11.5.0",
 		"typo3/cms-belog": "^11.5.0",
 		"typo3/cms-beuser": "^11.5.0",
@@ -52,6 +54,11 @@
 		"typo3/cms-tstemplate": "^11.5.0",
 		"typo3/cms-viewpage": "^11.5.0"
 	},
+	"extra": {
+		"typo3/cms": {
+				"web-dir": "public"
+		}
+},
 	"scripts":{
 		"typo3-cms-scripts": [
 			"typo3cms install:fixfolderstructure"

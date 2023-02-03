@@ -76,6 +76,68 @@ plugin.tx_jobapplications {
 			widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:jobapplications/Resources/Private/Templates/
     }
 
+
+#######################
+### BW_JOBS ###
+#######################
+
+EXT:gowords_typo3project1/Configuration/TypoScript/constants.typoscript
+
+plugin.tx_bwjobs_detail {
+  view {
+    templateRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Templates/
+    templateRootPaths.1 = {$plugin.tx_bwjobs_detail.view.templateRootPath}
+    partialRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Partials/
+    partialRootPaths.1 = {$plugin.tx_bwjobs_detail.view.partialRootPath}
+    layoutRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Layouts/
+    layoutRootPaths.1 = {$plugin.tx_bwjobs_detail.view.layoutRootPath}
+  }
+
+  persistence {
+    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
+  }
+
+  settings {
+    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
+    formPersistenceIdentifier = {$plugin.tx_bwjobs_detail.settings.formPersistenceIdentifier}
+    senderName = {$plugin.tx_bwjobs_detail.settings.senderName}
+    senderAddress = {$plugin.tx_bwjobs_detail.settings.senderAddress}
+    emailTemplateRootPath = {$plugin.tx_bwjobs_detail.settings.emailTemplateRootPath}
+    emailLayoutRootPath = {$plugin.tx_bwjobs_detail.settings.emailLayoutRootPath}
+  }
+
+  features {
+    # skipDefaultArguments = 1
+
+    # If set to 1, the enable fields are ignored in BE context
+    ignoreAllEnableFieldsInBe = 0
+  }
+
+  mvc {
+    # callDefaultActionIfActionCantBeResolved = 1
+  }
+}
+
+# Form Module
+module.tx_form {
+  settings {
+    yamlConfigurations {
+      EXT:bw_jobs/Configuration/Form/Setup.yaml = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Forms/jobApplication_de.form.yaml
+    }
+  }
+}
+
+# Form Plugin
+plugin.tx_form {
+  settings {
+    yamlConfigurations {
+      EXT:bw_jobs/Configuration/Form/Setup.yaml = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Forms/jobApplication_de.form.yaml
+    }
+  }
+}
+
+
+
 ################################
 ### BOOTSTRAP SCSS CONSTANTS ###
 ################################
@@ -83,4 +145,5 @@ plugin.bootstrap_package.settings.scss {
     primary = #eb3e4a
     secondary = #013859
 }
+
 

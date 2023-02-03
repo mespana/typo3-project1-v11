@@ -26,13 +26,13 @@ return [
     ],
     'EXTENSIONS' => [
         'backend' => [
-            'backendFavicon' => '',
-            'backendLogo' => '',
-            'loginBackgroundImage' => '',
-            'loginFootnote' => '',
+            'backendFavicon' => 'EXT:gowords_typo3project1/Resources/Public/Icons/favicon.ico',
+            'backendLogo' => 'EXT:gowords_typo3project1/Resources/Public/Images/logo.png',
+            'loginBackgroundImage' => 'EXT:gowords_typo3project1/Resources/Public/Images/layout/wittemaier_hintergrund2.jpg',
+            'loginFootnote' => '© 2023 Wittemaier Bau GmbH',
             'loginHighlightColor' => '',
-            'loginLogo' => '',
-            'loginLogoAlt' => '',
+            'loginLogo' => 'EXT:gowords_typo3project1/Resources/Public/Images/logo.png',
+            'loginLogoAlt' => 'Wittemaier Bau GmbH',
         ],
         'bootstrap_package' => [
             'disableCssProcessing' => '0',
@@ -47,18 +47,6 @@ return [
         'extensionmanager' => [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
-        ],
-        'jobapplications' => [
-            'allowedFileTypes' => '.pdf',
-            'companyName' => '',
-            'currency' => '',
-            'customFileSizeLimit' => '',
-            'indexing_api' => '0',
-            'indexing_api_debug' => '1',
-            'indexing_api_dev' => '0',
-            'key_path' => '',
-            'logo' => '',
-            'slugBehaviour' => 'uniqueInSite',
         ],
     ],
     'FE' => [

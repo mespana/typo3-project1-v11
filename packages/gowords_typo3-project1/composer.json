@@ -13,8 +13,8 @@
     "license": ["GPL-2.0-or-later"],
     "type": "typo3-cms-extension",
     "require": {
-        "bk2k/bootstrap-package": "^12.0",
-        "itx/jobapplications": "2.0"
+        "typo3/cms-core": "^11.5",
+        "bk2k/bootstrap-package": "^12.0"
     },
     "autoload": {
         "psr-4": {
