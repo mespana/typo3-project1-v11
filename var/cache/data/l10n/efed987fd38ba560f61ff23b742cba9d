@@ -1,0 +1,1 @@
+a:2:{s:26:"validator.captcha.notvalid";a:1:{i:0;a:2:{s:6:"source";s:35:"The entered captcha is not correct.";s:6:"target";s:35:"The entered captcha is not correct.";}}s:27:"formEditor.elements.Captcha";a:1:{i:0;a:2:{s:6:"source";s:7:"Captcha";s:6:"target";s:7:"Captcha";}}}

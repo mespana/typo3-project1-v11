@@ -1,0 +1,16 @@
+.DS_Store
+*.local
+.idea
+nbproject
+logs
+.env
+.env.*
+*.log
+node_modules
+
+# Credentials
+.npmrc
+auth.json
+
+# PHP CS Fixer
+.php-cs-fixer.cache

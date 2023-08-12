@@ -1,0 +1,228 @@
+
+renderingOptions:
+  submitButtonLabel: Absenden
+type: Form
+identifier: kontaktformular_de
+label: Kontaktformular_de
+prototypeName: standard
+finishers:
+  -
+    options:
+      subject: 'Kontaktanfrage: {singleselect-1}'
+      senderAddress: '{email}'
+      senderName: '{fullname}'
+      attachUploads: true
+      replyToRecipients:
+        wittemaier@t-online.de: 'Wittemaier Bau GmbH'
+      addHtmlPart: true
+      recipients:
+        wittemaier@t-online.de: 'Wittemaier Bau GmbH'
+      carbonCopyRecipients:
+        '': ''
+      title: '{singleselect-1}'
+      useFluidEmail: false
+    identifier: EmailToReceiver
+  -
+    options:
+      subject: 'Ihre Kontaktanfrage: {singleselect-1}'
+      recipients:
+        '{email}': ''
+      senderAddress: wittemaier@t-online.de
+      senderName: 'Wittemaier Bau GmbH'
+      addHtmlPart: true
+      attachUploads: true
+      useFluidEmail: false
+      title: Kontaktanfrage
+      replyToRecipients:
+        '{email}': ''
+      message: "Sehr geehrte(r) Frau/ Herr {fullname},\nvielen Dank für Ihre Nachricht, wir werden Sie baldmöglichst kontaktieren! \n\nMit freundlichen Grüßen\nWittemaier Bau GmbH\n"
+    identifier: EmailToSender
+  -
+    options:
+      message: 'Vielen Dank für Ihre Nachricht, wir werden Sie baldmöglichst kontaktieren! '
+      contentElementUid: ''
+    identifier: Confirmation
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'Vorherige Seite'
+      nextButtonLabel: 'Nächster Schritt'
+    type: Page
+    identifier: form
+    label: ''
+    renderables:
+      -
+        properties:
+          text: 'Minimal benötigte Angaben sind mit einem * gekennzeichnet.'
+        type: StaticText
+        identifier: mandatory
+        label: Kontaktformular
+      -
+        type: GridRow
+        identifier: gridrow
+        label: ''
+        renderables:
+          -
+            type: Fieldset
+            identifier: fieldset-left
+            label: ''
+            properties:
+              gridColumnClassAutoConfiguration:
+                viewPorts:
+                  xs:
+                    numbersOfColumnsToUse: '12'
+                  sm:
+                    numbersOfColumnsToUse: '6'
+                  md:
+                    numbersOfColumnsToUse: '6'
+                  lg:
+                    numbersOfColumnsToUse: '6'
+            renderables:
+              -
+                defaultValue: ''
+                type: Text
+                identifier: fullname
+                label: 'Vor- und Nachname'
+                properties:
+                  fluidAdditionalAttributes:
+                    placeholder: 'Vor- und Nachname'
+                    required: required
+                validators:
+                  -
+                    identifier: NotEmpty
+              -
+                defaultValue: ''
+                type: Text
+                identifier: email
+                label: E-Mail
+                properties:
+                  fluidAdditionalAttributes:
+                    placeholder: E-Mail
+                    required: required
+                  validationErrorMessages:
+                    -
+                      code: 1221560910
+                      message: 'Geben Sie bitte Ihre E-Mail Adresse ein!'
+                    -
+                      code: 1221560718
+                      message: 'Geben Sie bitte Ihre E-Mail Adresse ein!'
+                    -
+                      code: 1347992400
+                      message: 'Geben Sie bitte Ihre E-Mail Adresse ein!'
+                    -
+                      code: 1347992453
+                      message: 'Geben Sie bitte Ihre E-Mail Adresse ein!'
+                validators:
+                  -
+                    identifier: NotEmpty
+                  -
+                    identifier: EmailAddress
+          -
+            type: Fieldset
+            identifier: fieldset-right
+            label: ''
+            properties:
+              gridColumnClassAutoConfiguration:
+                viewPorts:
+                  xs:
+                    numbersOfColumnsToUse: '12'
+                  sm:
+                    numbersOfColumnsToUse: '6'
+                  md:
+                    numbersOfColumnsToUse: '6'
+                  lg:
+                    numbersOfColumnsToUse: '6'
+            renderables:
+              -
+                defaultValue: ''
+                type: Text
+                identifier: company
+                label: Telefonnr.
+                properties:
+                  fluidAdditionalAttributes:
+                    placeholder: Telefonnr.
+                    required: required
+                validators:
+                  -
+                    identifier: NotEmpty
+              -
+                properties:
+                  options:
+                    'Ich bitte um Rückruf': 'Ich bitte um Rückruf'
+                    'Ich bitte um Terminvereinbarung': 'Ich bitte um Terminvereinbarung'
+                    '': ''
+                  fluidAdditionalAttributes:
+                    required: required
+                type: SingleSelect
+                identifier: singleselect-1
+                label: 'Ihr Anliegen'
+                validators:
+                  -
+                    identifier: NotEmpty
+      -
+        properties:
+          text: 'Wenn Sie eine Datei oder ein Foto haben, das Sie uns zukommen lassen wollen, laden Sie diese im nächsten Schritt hoch'
+        type: StaticText
+        identifier: statictext-1
+        label: ''
+      -
+        type: Checkbox
+        identifier: checkbox-1
+        label: 'Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage erhoben und verarbeitet werden.'
+        properties:
+          elementDescription: ''
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+  -
+    renderingOptions:
+      previousButtonLabel: zurück
+      nextButtonLabel: weiter
+    type: Page
+    identifier: page-1
+    label: 'Bild oder Datei hinzufügen'
+    renderables:
+      -
+        properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - image/jpeg
+        type: ImageUpload
+        identifier: imageupload-1
+        label: 'Image upload'
+      -
+        properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - application/pdf
+        type: FileUpload
+        identifier: fileupload-1
+        label: 'File upload'
+      -
+        defaultValue: ''
+        type: Textarea
+        identifier: textarea-1
+        label: 'Ihre Nachricht (max. 600 Zeichen)'
+        properties:
+          fluidAdditionalAttributes:
+            minlength: '0'
+            maxlength: '600'
+        validators:
+          -
+            options:
+              minimum: '0'
+              maximum: '600'
+            identifier: StringLength
+      -
+        type: Captcha
+        identifier: captcha-1
+        label: Captcha
+  -
+    renderingOptions:
+      previousButtonLabel: zurück
+      nextButtonLabel: weiter
+    type: SummaryPage
+    identifier: summarypage-1
+    label: Übersicht

@@ -1,0 +1,148 @@
+# Detail Plugin
+plugin.tx_bwjobs_detail {
+  view {
+    templateRootPaths.0 = EXT:bw_jobs/Resources/Private/Templates/
+    templateRootPaths.1 = {$plugin.tx_bwjobs_detail.view.templateRootPath}
+    partialRootPaths.0 = EXT:bw_jobs/Resources/Private/Partials/
+    partialRootPaths.1 = {$plugin.tx_bwjobs_detail.view.partialRootPath}
+    layoutRootPaths.0 = EXT:bw_jobs/Resources/Private/Layouts/
+    layoutRootPaths.1 = {$plugin.tx_bwjobs_detail.view.layoutRootPath}
+  }
+
+  persistence {
+    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
+  }
+
+  settings {
+    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
+    formPersistenceIdentifier = {$plugin.tx_bwjobs_detail.settings.formPersistenceIdentifier}
+    senderName = {$plugin.tx_bwjobs_detail.settings.senderName}
+    senderAddress = {$plugin.tx_bwjobs_detail.settings.senderAddress}
+    emailTemplateRootPath = {$plugin.tx_bwjobs_detail.settings.emailTemplateRootPath}
+    emailLayoutRootPath = {$plugin.tx_bwjobs_detail.settings.emailLayoutRootPath}
+    dateFormat = %d. %B %Y
+  }
+
+  features {
+    # skipDefaultArguments = 1
+
+    # If set to 1, the enable fields are ignored in BE context
+    ignoreAllEnableFieldsInBe = 0
+  }
+
+  mvc {
+    # callDefaultActionIfActionCantBeResolved = 1
+  }
+}
+
+# List Plugin
+plugin.tx_bwjobs_list {
+  view {
+    templateRootPaths.0 = EXT:bw_jobs/Resources/Private/Templates/
+    templateRootPaths.1 = {$plugin.tx_bwjobs_list.view.templateRootPath}
+    partialRootPaths.0 = EXT:bw_jobs/Resources/Private/Partials/
+    partialRootPaths.1 = {$plugin.tx_bwjobs_list.view.partialRootPath}
+    layoutRootPaths.0 = EXT:bw_jobs/Resources/Private/Layouts/
+    layoutRootPaths.1 = {$plugin.tx_bwjobs_list.view.layoutRootPath}
+  }
+
+  persistence {
+    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
+  }
+
+  settings {
+    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
+    itemsPerPage = {$plugin.tx_bwjobs_list.settings.itemsPerPage}
+  }
+
+  features {
+    # skipDefaultArguments = 1
+
+    # If set to 1, the enable fields are ignored in BE context
+    ignoreAllEnableFieldsInBe = 0
+  }
+
+  mvc {
+    # callDefaultActionIfActionCantBeResolved = 1
+  }
+}
+
+# API Plugin
+plugin.tx_bwjobs_api {
+  persistence < plugin.tx_bwjobs_list.persistence
+  settings < plugin.tx_bwjobs_list.settings
+}
+
+# API Page
+bwjobs_api = PAGE
+bwjobs_api {
+  typeNum = 1655192624
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-type:application/json
+    xhtml_cleaning = 0
+    admPanel = 0
+    debug = 0
+    no_cache = 1
+    contentObjectExceptionHandler = 0
+  }
+  10 = USER
+  10 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = BwJobs
+    pluginName = Api
+    vendorName = Browserwerk
+  }
+}
+
+# BwJobs Module
+module.tx_bwjobs {
+  view {
+    templateRootPaths.0 = EXT:bw_jobs/Resources/Private/Backend/Templates/
+    templateRootPaths.1 = {$module.tx_bwjobs_jobs.view.templateRootPath}
+    partialRootPaths.0 = EXT:bw_jobs/Resources/Private/Backend/Partials/
+    partialRootPaths.1 = {$module.tx_bwjobs_jobs.view.partialRootPath}
+    layoutRootPaths.0 = EXT:bw_jobs/Resources/Private/Backend/Layouts/
+    layoutRootPaths.1 = {$module.tx_bwjobs_jobs.view.layoutRootPath}
+  }
+
+  persistence {
+    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
+  }
+
+  settings {
+    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
+  }
+}
+
+# Form Module
+module.tx_form {
+  settings {
+    yamlConfigurations {
+      1647521698445 = EXT:bw_jobs/Configuration/Form/Setup.yaml
+    }
+  }
+}
+
+# Form Plugin
+plugin.tx_form {
+  settings {
+    yamlConfigurations {
+      1647521698445 = EXT:bw_jobs/Configuration/Form/Setup.yaml
+    }
+  }
+}
+
+# Page Title Provider
+[traverse(request.getQueryParams(), 'tx_bwjobs_detail/jobPosition') > 0]
+  config.pageTitleProviders {
+    record {
+      provider = Browserwerk\BwJobs\PageTitle\PageTitleProvider
+      after = seo
+    }
+  }
+[global]
+
+# CSS: Unset to remove the default styles
+#page.includeCSSLibs.bwJobsBootstrap = EXT:bw_jobs/Resources/Public/Css/bootstrap.min.css
+page.includeCSS.bwJobs = EXT:bw_jobs/Resources/Public/Css/jobs.css

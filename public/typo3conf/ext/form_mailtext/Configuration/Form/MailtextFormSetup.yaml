@@ -1,0 +1,66 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          finishersDefinition:
+            EmailToSender:
+              options:
+                templateRootPaths:
+                  20: 'EXT:form_mailtext/Resources/Private/Frontend/Templates/Finishers/Email/'
+              # Extra field 'message' in finisher config in form plugin
+              FormEngine:
+                elements:
+                  message:
+                    label: 'formEditor.elements.Form.finisher.EmailToSender.editor.message.label'
+                    config:
+                      type: text
+                      enableRichtext: true
+                      eval: required
+              formEditor:
+                predefinedDefaults:
+                  options:
+                    message: "Hi, here's your input: {variables}"
+            EmailToReceiver:
+              options:
+                templateRootPaths:
+                  20: 'EXT:form_mailtext/Resources/Private/Frontend/Templates/Finishers/Email/'
+              # Extra field 'message' in finisher config in form plugin
+              FormEngine:
+                elements:
+                  message:
+                    label: 'formEditor.elements.Form.finisher.EmailToReceiver.editor.message.label'
+                    config:
+                      type: text
+                      enableRichtext: true
+                      eval: required
+              formEditor:
+                predefinedDefaults:
+                  options:
+                    message: "Hi, here's the users input: {variables}"
+          # Extra field 'message' in finisher config in form module
+          formElementsDefinition:
+            Form:
+              formEditor:
+                propertyCollections:
+                  finishers:
+                    10:
+                      editors:
+                        220:
+                          identifier: 'message'
+                          templateName: 'Inspector-TextareaEditor'
+                          label: 'formEditor.elements.Form.finisher.EmailToSender.editor.message.label'
+                          propertyPath: 'options.message'
+                          enableFormelementSelectionButton: true
+                          propertyValidators:
+                            10: 'NotEmpty'
+                    20:
+                      editors:
+                        220:
+                          identifier: 'message'
+                          templateName: 'Inspector-TextareaEditor'
+                          label: 'formEditor.elements.Form.finisher.EmailToReceiver.editor.message.label'
+                          propertyPath: 'options.message'
+                          enableFormelementSelectionButton: true
+                          propertyValidators:
+                            10: 'NotEmpty'

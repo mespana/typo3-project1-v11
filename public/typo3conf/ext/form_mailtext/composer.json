@@ -1,0 +1,35 @@
+{
+  "name": "kitzberger/form-mailtext",
+  "type": "typo3-cms-extension",
+  "description": "TYPO3 Form: Mailtexts via plugin",
+  "homepage": "https://github.com/kitzberger/form-mailtext",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "keywords": [
+    "TYPO3 CMS"
+  ],
+  "require": {
+    "typo3/cms-core": "^10.4 || ^11.5 || ^12.4",
+    "typo3/cms-form": "^10.4 || ^11.5 || ^12.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kitzberger\\FormMailtext\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "form_mailtext"
+    }
+  },
+  "require-dev": {
+    "rector/rector": "^0.12.9"
+  },
+  "config": {
+    "allow-plugins": {
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true
+    }
+  }
+}

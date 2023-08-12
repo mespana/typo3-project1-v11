@@ -1,0 +1,61 @@
+plugin.tx_cookieman.settings.trackingObjects {
+    GoogleAnalytics {
+        # inline scripts would break Content-Security-Policy: script-src
+        # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src
+        inject (
+            <script data-what="GoogleAnalytics" src="/typo3conf/ext/cookieman/Resources/Public/Js/Injects/example-inject.js"></script>
+        )
+        # example:
+#        inject (
+#<script>
+#(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+#(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+#m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+#})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+#
+#ga('create', 'UA-XXXXX-Y', 'auto');
+#ga('send', 'pageview');
+#</script>
+#        )
+        show {
+            # https://developers.google.com/analytics/devguides/collection/gtagjs/cookie-usage
+            _ga {
+                duration = 2
+                durationUnit = years
+                type = cookie_http+html
+                provider = Google
+            }
+
+            _gat {
+                duration = 1
+                durationUnit = day
+                type = cookie_http+html
+                provider = Google
+                htmlCookieRemovalPattern = ^_gat(?:_UA\-\d+\-\d+)?$
+            }
+
+            _gid {
+                duration = 1
+                durationUnit = day
+                type = cookie_http+html
+                provider = Google
+            }
+
+            _ga_--container-id-- {
+                duration = 2
+                durationUnit = years
+                type = cookie_http+html
+                provider = Google
+                htmlCookieRemovalPattern = ^_ga_GTM\-\d+$
+            }
+
+            _gac_--property-id-- {
+                duration = 3
+                durationUnit = months
+                type = cookie_http+html
+                provider = Google
+                htmlCookieRemovalPattern = ^_gac_UA\-\d+\-\d+$
+            }
+        }
+    }
+}

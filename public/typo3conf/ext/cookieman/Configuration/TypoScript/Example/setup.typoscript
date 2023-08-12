@@ -1,0 +1,45 @@
+# include definition of TrackingObjects
+@import 'EXT:cookieman/Configuration/TypoScript/TrackingObjects/*.typoscript'
+
+plugin.tx_cookieman {
+    # see documentation: https://github.com/dmind-gmbh/extension-cookieman
+    settings {
+        groups {
+            # extend group (already configured in the base template)
+            mandatory {
+                trackingObjects {
+                    10 = fe_typo_user
+                }
+            }
+
+            # a new group
+            marketing {
+                trackingObjects {
+                    0 = Matomo
+                    10 = GoogleAnalytics
+                    20 = GoogleTagManager
+                    30 = Bing
+                    40 = FacebookPixel
+                    50 = MicrosoftForms
+                    60 = Slideshare
+                }
+
+                respectDnt = 1
+                showDntMessage = 1
+            }
+
+            # external content
+            external {
+                trackingObjects {
+                    0 = GoogleMaps
+                    10 = YouTube
+                    20 = MicrosoftStream
+                    30 = Vimeo
+                }
+
+                respectDnt = 1
+                showDntMessage = 1
+            }
+        }
+    }
+}
