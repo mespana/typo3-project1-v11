@@ -33,4 +33,4 @@ plugin.tx_indexedsearch {
       displayResults = Anzeige der Ergebnisse <strong>%1$s bis %2$s</strong> von insgesamt <strong>%3$s</strong>
     }
   }
-}
+

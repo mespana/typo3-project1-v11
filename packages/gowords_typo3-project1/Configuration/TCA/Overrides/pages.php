@@ -14,6 +14,6 @@ call_user_func(function()
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerPageTSConfigFile(
         $extensionKey,
         'Configuration/TsConfig/Page/All.tsconfig',
-        'typo3-project1'
+        'Wittemaier Bau Web Relaunch'
     );
 });

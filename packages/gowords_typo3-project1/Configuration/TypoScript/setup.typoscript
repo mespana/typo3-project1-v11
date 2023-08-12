@@ -2,16 +2,18 @@
 #### DEPENDENCIES ####
 ######################
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript">
-
+@import 'EXT:form/Configuration/TypoScript/setup.typoscript'
 
 ##############
 #### PAGE ####
 ##############
 page {
     includeCSS {
-        theme = EXT:gowords_typo3project1/Resources/Public/Scss/Theme/theme.scss
-        css = EXT:gowords_typo3project1/Resources/Public/Css/styles.css
-        fontawesome = EXT:gowords_typo3project1/Resources/Public/Fontawesome/css/all.css
+        theme = EXT:typo3_project1/Resources/Public/Scss/Theme/theme.scss
+       ## bootstrap = EXT:gowords_typo3-project1/Resources/Public/Css/bootstrap5-theme.css
+        css = EXT:typo3_project1/Resources/Public/Css/styles.css
+        fontawesome = EXT:typo3_project1/Resources/Public/Fontawesome/css/all.css
+        jobs = EXT:typo3_project1/Resources/Public/Css/jobs.css
     }
 
     includeJSLibs {
@@ -27,12 +29,16 @@ page {
     }
 
     includeJSFooter {
-        project1_scripts = EXT:gowords_typo3project1/Resources/Public/JavaScript/Dist/scripts.js
+        project1_scripts = EXT:typo3_project1/Resources/Public/JavaScript/Dist/scripts.js
     }
 }
 
+#### YAML registration for the frontend ####
 
-## Library_lib.searchbox.ts
+config.contentObjectExeptionHandler.errorMessage = Oh je, das hat nicht geklappt! %s
+
+
+#### Library_lib.searchbox.ts ####
 
 lib.headerSearch = USER
 lib.headerSearch {
@@ -59,7 +65,7 @@ lib.headerSearch {
 # Configuration for indexedsearch plugin
 
 plugin.tx_indexedsearch {
-  templateFile = EXT:gowords_typo3project1/Resources/Private/Layouts/Page/Default.html
+  templateFile = EXT:typo3_project1/Resources/Private/Layouts/Page/Default.html
 
     forwardSearchWordsInResultLink= 0
     show {
@@ -87,21 +93,21 @@ plugin.tx_indexedsearch {
       displayResults = Anzeige der Ergebnisse <strong>%1$s bis %2$s</strong> von insgesamt <strong>%3$s</strong>
     }
   }
-}
+
 
 plugin.tx_indexedsearch {
    view {
        templateRootPaths {
-           20 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/
+           20 = EXT:typo3_project1/Resources/Private/Extensions/IndexedSearch/
            21 = {$plugin.bootstrap_package.view.templateRootPath}IndexedSearch/
        }
        partialRootPaths {
-           20 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/Partials/
+           20 = EXT:typo3_project1/Resources/Private/Extensions/IndexedSearch/Partials/
            21 = {$plugin.bootstrap_package.view.partialRootPath}IndexedSearch/
 
        }
        layoutRootPaths {
-           20 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/
+           20 = EXT:typo3_project1/Resources/Private/Extensions/IndexedSearch/
            21 = {$plugin.bootstrap_package.view.layoutRootPath}IndexedSearch/
        }
    }
@@ -116,48 +122,54 @@ lib.headerSearch_plugin {
 
   10.resultPage = 27
 
-  10.cssFile = EXT:gowords_typo3project1/Resources/Public/Css/styles.css
+  10.cssFile = EXT:typo3_project1/Resources/Public/Css/styles.css
 
   10.loadFlexformsFromOtherCE = 191 // Search form plugin UID
 }
 
-#######################
-### BW_JOBS ###
-#######################
 
-# Form Module
-module.tx_form {
-  settings {
-    yamlConfigurations {
-      EXT:bw_jobs/Configuration/Form/Setup.yaml = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Forms/jobApplication_de.form.yaml
-    }
-  }
-}
+##############
+#### form ####
+##############
 
-# Form Plugin
 plugin.tx_form {
   settings {
     yamlConfigurations {
-      EXT:bw_jobs/Configuration/Form/Setup.yaml = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Forms/jobApplication_de.form.yaml
+      105 = EXT:typo3_project1/Configuration/Yaml/FormSetup.yaml
+    }
+  }
+}
+
+module.tx_form {
+  settings {
+    yamlConfigurations {
+      105 = EXT:typo3_project1/Configuration/Yaml/FormSetup.yaml
+
     }
   }
 }
 
 #######################
+### BW_CAPTCHA ###
+#######################
+
+plugin.tx_bwcaptcha {
+  settings {
+    length = 10
+    backgroundColor = 255,0,0
+  }
+}
+
+
+#######################
 ### BW_JOBS ###
 #######################
 
-  plugin.tx_bwjobs_detail {
-  view {
-    templateRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Templates/
-    templateRootPaths.1 = {$plugin.tx_bwjobs_detail.view.templateRootPath}
-    partialRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Partials/
-    partialRootPaths.1 = {$plugin.tx_bwjobs_detail.view.partialRootPath}
-    layoutRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Layouts/
-    layoutRootPaths.1 = {$plugin.tx_bwjobs_detail.view.layoutRootPath}
-  }
+# CSS: Unset to remove the default styles
+## page.includeCSSLibs.bwJobsBootstrap = EXT:bw_jobs/Resources/Public/Css/bootstrap.min.css
+## page.includeCSS.bwJobs = EXT:bw_jobs/Resources/Public/Css/jobs.css
 
-  page.includeCSS.bwJobs = EXT:gowords_typo3project1/Resources/Public/Css/styles.css
+
 
 
 plugin.tx_seo {

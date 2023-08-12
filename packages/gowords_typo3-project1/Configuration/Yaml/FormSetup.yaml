@@ -1,0 +1,17 @@
+TYPO3:
+  CMS:
+    Form:
+      persistenceManager:
+        allowedExtensionPaths:
+          101: EXT:typo3_project1/Resources/Private/Forms/
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                templateRootPaths:
+                  203: 'EXT:typo3_project1/Resources/Private/Frontend/Templates/'
+                partialRootPaths:
+                  203: 'EXT:typo3_project1/Resources/Private/Frontend/Partials/'
+                layoutRootPaths:
+                  203: 'EXT:typo3_project1/Resources/Private/Frontend/Layouts/'

@@ -3,7 +3,7 @@ return [
     'BE' => [
         'debug' => false,
         'explicitADmode' => 'explicitAllow',
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$RE1KckRhOTE1MktmWHNnNA$hfW+BYCLADDU/AqZByJUzzyCwGitt9UnjOt1w3MhD7A',
+        'installToolPassword' => 'Wwitt2020%',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -26,12 +26,12 @@ return [
     ],
     'EXTENSIONS' => [
         'backend' => [
-            'backendFavicon' => 'EXT:gowords_typo3project1/Resources/Public/Icons/favicon.ico',
-            'backendLogo' => 'EXT:gowords_typo3project1/Resources/Public/Images/logo.png',
-            'loginBackgroundImage' => 'EXT:gowords_typo3project1/Resources/Public/Images/layout/wittemaier_hintergrund2.jpg',
+            'backendFavicon' => 'EXT:typo3_project1/Resources/Public/Icons/favicon.ico',
+            'backendLogo' => 'EXT:typo3_project1/Resources/Public/Images/logo.png',
+            'loginBackgroundImage' => 'EXT:typo3_project1/Resources/Public/Images/layout/wittemaier_hintergrund2.jpg',
             'loginFootnote' => '© 2023 Wittemaier Bau GmbH',
             'loginHighlightColor' => '',
-            'loginLogo' => 'EXT:gowords_typo3project1/Resources/Public/Images/logo.png',
+            'loginLogo' => 'EXT:typo3_project1/Resources/Public/Images/logo.png',
             'loginLogoAlt' => 'Wittemaier Bau GmbH',
         ],
         'bootstrap_package' => [

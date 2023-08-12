@@ -15,7 +15,7 @@
             </div>
         </f:if>
     </section>
-    
+
     <hr class="bw-jobs-divider">
 
     <f:if condition="{jobPosition.description}">
@@ -50,7 +50,7 @@
         <section class="bw-jobs-section">
             <f:if condition="{jobPosition.headlinesVisible}">
                 <h2 class="bw-jobs-headline">
-                    <f:translate key="required_experience_headline"/>&#58;
+                    <f:translate key="required_experience_headline"/>
                 </h2>
             </f:if>
             <div class="bw-jobs-body">
@@ -64,7 +64,7 @@
         <section class="bw-jobs-section">
             <f:if condition="{jobPosition.headlinesVisible}">
                 <h2 class="bw-jobs-headline">
-                    <f:translate key="required_qualifications_headline"/>&#58;
+                    <f:translate key="required_qualifications_headline"/>
                 </h2>
             </f:if>
             <div class="bw-jobs-body">
@@ -147,7 +147,7 @@
         </f:for>
     </f:for>
 
-    <f:if condition="{settings.useApplicationForm} || {firstContactPerson}">
+    <f:if condition="{jobPosition.directApplicationPossible} && ({settings.useApplicationForm} || {firstContactPerson})">
         <hr class="bw-jobs-divider">
         <section class="bw-jobs-section">
             <div class="bw-jobs-cta">

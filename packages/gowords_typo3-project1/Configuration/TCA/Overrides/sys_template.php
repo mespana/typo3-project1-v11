@@ -6,7 +6,7 @@ call_user_func(function()
     /**
      * Temporary variables
      */
-    $extensionKey = 'typo3_project1';
+    $extensionKey = 'gowords_typo3project1';
 
     /**
      * Default TypoScript for Typo3Project1
@@ -14,6 +14,6 @@ call_user_func(function()
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
         $extensionKey,
         'Configuration/TypoScript',
-        'typo3-project1'
+        'Wittemaier Bau GmbH'
     );
 });

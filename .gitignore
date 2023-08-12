@@ -1,5 +1,6 @@
 .DS_Store
-.idea
+.idea/
+
 nbproject
 /var/*
 !/var/labels
@@ -7,6 +8,7 @@ nbproject
 /public/*
 !/public/.htaccess
 !/public/typo3conf
-/public/typo3conf/*
+/public/typo3conf/ext/*
+!/public/typo3conf/ext/
 !/public/typo3conf/LocalConfiguration.php
 !/public/typo3conf/AdditionalConfiguration.php

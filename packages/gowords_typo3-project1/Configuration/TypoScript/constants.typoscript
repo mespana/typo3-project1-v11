@@ -9,8 +9,8 @@
 ############
 page {
     logo {
-        file = EXT:gowords_typo3project1/Resources/Public/Images/WittemaierLogo.jpg
-        fileInverted = EXT:gowords_typo3project1/Resources/Public/Images/WittemaierLogo.jpg
+        file = EXT:typo3_project1/Resources/Public/Images/WittemaierLogo.jpg
+        fileInverted = EXT:typo3_project1/Resources/Public/Images/WittemaierLogo.jpg
         height = 120
         width = 120
         alt = Wittemaier Bau GmbH
@@ -20,11 +20,12 @@ page {
         file = EXT:typo3_project1/Resources/Public/Icons/favicon.ico
     }
     fluidtemplate {
-        layoutRootPath = EXT:gowords_typo3project1/Resources/Private/Layouts/Page/
-        partialRootPath = EXT:gowords_typo3project1/Resources/Private/Partials/Page/
-        templateRootPath = EXT:gowords_typo3project1/Resources/Private/Templates/Page/
+        layoutRootPath = EXT:typo3_project1/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:typo3_project1/Resources/Private/Partials/Page/
+        templateRootPath = EXT:typo3_project1/Resources/Private/Templates/Page/
     }
 }
+
 
 
 ##################
@@ -32,9 +33,9 @@ page {
 ##################
 plugin.bootstrap_package {
     view {
-        layoutRootPath = EXT:gowords_typo3project1/Resources/Private/Layouts/
-        partialRootPath = EXT:gowords_typo3project1/Resources/Private/Partials/
-        templateRootPath = EXT:gowords_typo3project1/Resources/Private/Templates/
+        layoutRootPath = EXT:typo3_project1/Resources/Private/Layouts/
+        partialRootPath = EXT:typo3_project1/Resources/Private/Partials/
+        templateRootPath = EXT:typo3_project1/Resources/Private/Templates/
     }
 }
 
@@ -43,11 +44,10 @@ plugin.bootstrap_package {
     partialRootPaths {
         10 = EXT:indexed_search/Resources/Private/Partials/
         20 = {$plugin.bootstrap_package.view.partialRootPath}IndexedSearch/
-        21 = EXT:gowords_typo3project1/Resources/Private/Extensions/IndexedSearch/Partials/ 
+        21 = EXT:typo3_project1/Resources/Private/Extensions/IndexedSearch/Partials/ 
         }
     }
 }
-
 
 
 ########################
@@ -55,85 +55,10 @@ plugin.bootstrap_package {
 ########################
 plugin.bootstrap_package_contentelements {
     view {
-        layoutRootPath = EXT:gowords_typo3project1/Resources/Private/Layouts/ContentElements/
-        partialRootPath = EXT:gowords_typo3project1/Resources/Private/Partials/ContentElements/
-        templateRootPath = EXT:gowords_typo3project1/Resources/Private/Templates/ContentElements/
+        layoutRootPath = EXT:typo3_project1/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:typo3_project1/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:typo3_project1/Resources/Private/Templates/ContentElements/
     }
-}
-
-#######################
-### JOBAPPLICATIONS ###
-#######################
-
-EXT:gowords_typo3project1/Configuration/TypoScript/constants.typoscript
-
-plugin.tx_jobapplications {
-    view {
-        templateRootPath = EXT:gowords_typo3project1/Resources/Private/Extensions/Jobapplications/Templates/
-        partialRootPath = EXT:gowords_typo3project1/Resources/Private/Extensions/Jobapplications/Partials/
-        layoutRootPath = EXT:gowords_typo3project1/Resources/Private/Extensions/Jobapplications/Layouts/
-        }
-			widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:jobapplications/Resources/Private/Templates/
-    }
-
-
-#######################
-### BW_JOBS ###
-#######################
-
-EXT:gowords_typo3project1/Configuration/TypoScript/constants.typoscript
-
-plugin.tx_bwjobs_detail {
-  view {
-    templateRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Templates/
-    templateRootPaths.1 = {$plugin.tx_bwjobs_detail.view.templateRootPath}
-    partialRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Partials/
-    partialRootPaths.1 = {$plugin.tx_bwjobs_detail.view.partialRootPath}
-    layoutRootPaths.0 = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Layouts/
-    layoutRootPaths.1 = {$plugin.tx_bwjobs_detail.view.layoutRootPath}
-  }
-
-  persistence {
-    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
-  }
-
-  settings {
-    storagePid = {$module.tx_bwjobs_jobs.persistence.storagePid}
-    formPersistenceIdentifier = {$plugin.tx_bwjobs_detail.settings.formPersistenceIdentifier}
-    senderName = {$plugin.tx_bwjobs_detail.settings.senderName}
-    senderAddress = {$plugin.tx_bwjobs_detail.settings.senderAddress}
-    emailTemplateRootPath = {$plugin.tx_bwjobs_detail.settings.emailTemplateRootPath}
-    emailLayoutRootPath = {$plugin.tx_bwjobs_detail.settings.emailLayoutRootPath}
-  }
-
-  features {
-    # skipDefaultArguments = 1
-
-    # If set to 1, the enable fields are ignored in BE context
-    ignoreAllEnableFieldsInBe = 0
-  }
-
-  mvc {
-    # callDefaultActionIfActionCantBeResolved = 1
-  }
-}
-
-# Form Module
-module.tx_form {
-  settings {
-    yamlConfigurations {
-      EXT:bw_jobs/Configuration/Form/Setup.yaml = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Forms/jobApplication_de.form.yaml
-    }
-  }
-}
-
-# Form Plugin
-plugin.tx_form {
-  settings {
-    yamlConfigurations {
-      EXT:bw_jobs/Configuration/Form/Setup.yaml = EXT:gowords_typo3project1/Resources/Private/Extensions/bw_jobs/Forms/jobApplication_de.form.yaml
-    }
-  }
 }
 
 
@@ -142,8 +67,28 @@ plugin.tx_form {
 ### BOOTSTRAP SCSS CONSTANTS ###
 ################################
 plugin.bootstrap_package.settings.scss {
-    primary = #eb3e4a
+    primary = #0099cc
     secondary = #013859
 }
+
+
+#######################
+### BW_JOBS ###
+#######################
+
+# Detail view
+plugin.tx_bwjobs_detail.view.templateRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Templates/
+plugin.tx_bwjobs_detail.view.partialRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Partials/
+plugin.tx_bwjobs_detail.view.layoutRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Layouts/
+
+# List view
+plugin.tx_bwjobs_list.view.templateRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Templates/
+plugin.tx_bwjobs_list.view.partialRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Partials/
+plugin.tx_bwjobs_list.view.layoutRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Layouts/
+
+# Backend module
+module.tx_bwjobs_jobs.view.templateRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Backend/Templates/
+module.tx_bwjobs_jobs.view.partialRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Backend/Partials/
+module.tx_bwjobs_jobs.view.layoutRootPath = EXT:typo3_project1/Resources/Private/Extensions/bw_jobs/Backend/Layouts/
 
 

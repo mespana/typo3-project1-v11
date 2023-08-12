@@ -23,11 +23,7 @@
     },
     "extra": {
       "typo3/cms": {
-        "extension-key":"gowords_typo3project1"
+        "extension-key":"typo3_project1"
       }
-    },
-    "replace": {
-        "gowords/typo3project1": "self.version",
-        "typo3-ter/typo3project1": "self.version"
     }
 }

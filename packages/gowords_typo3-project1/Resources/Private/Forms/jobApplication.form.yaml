@@ -8,8 +8,10 @@ finishers:
   - identifier: EmailToApplicant
     options:
       subject: 'Thank you for your application!'
-      recipientAddress: '{email}'
-      recipientName: '{first-name} {last-name}'
+      recipients:
+        '{email}': ''
+      senderAddress: wittemaier@t-online.de
+      senderName: 'Wittemaier Bau GmbH'
       attachUploads: false
       saveFiles: false
       addHtmlPart: true
@@ -17,13 +19,15 @@ finishers:
   - identifier: EmailToContactPerson
     options:
       subject: 'New application'
+      recipientAddress: wittemaier@t-online.de 
       attachUploads: true
       saveFiles: false
       addHtmlPart: true
       templateName: EmailToContactPerson.html
-  - identifier: Redirect
-    options:
-      pageUid: 1
+ options:
+      message: "Vielen Dank, wir werden uns baldmöglichst zurück melden!\n "
+      contentElementUid: ''
+    identifier: Confirmation
 renderables:
   - renderingOptions:
       previousButtonLabel: 'Previous step'
@@ -135,14 +139,3 @@ renderables:
             type: FileUpload
             identifier: miscellaneous-upload
             label: 'Miscellaneous'
-      -
-        type: Checkbox
-        identifier: checkbox-1
-        label: 'Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage erhoben und verarbeitet werden.'
-        properties:
-          fluidAdditionalAttributes:
-            required: required
-        validators:
-          -
-            identifier: NotEmpty
-

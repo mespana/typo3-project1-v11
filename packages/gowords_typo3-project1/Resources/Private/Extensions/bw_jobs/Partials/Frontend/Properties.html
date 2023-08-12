@@ -11,7 +11,7 @@
                 {jobPosition.workHours}
             </span>
             <span class="bw-jobs-detail-box__label">
-                <f:translate key="work_hours"/> &#58;
+                <f:translate key="work_hours"/>
             </span>
         </div>
     </f:if>
@@ -30,7 +30,7 @@
     <f:if condition="{jobPosition.employmentTypes} && {jobPosition.employmentTypesPublic}">
         <div class="bw-jobs-detail-box">
             <span class="bw-jobs-detail-box__label">
-                <f:translate key="employment_types"/>&#58;
+                <f:translate key="employment_types"/>
             </span>
             <span class="bw-jobs-detail-box__value">
                 <f:for as="employmentType" each="{jobPosition.employmentTypes}" iteration="iterator">
@@ -68,40 +68,40 @@
     <f:if condition="{jobPosition.startDate}">
         <div class="bw-jobs-detail-box">
             <span class="bw-jobs-detail-box__label">
-                <f:translate key="start_date"/>&#58; <b>nach Vereinbarung</b>
+                <f:translate key="start_date"/>&#058; <strong>nach Vereinbarung</strong>
             </span>
-            <!--<span class="bw-jobs-detail-box__value"> 
-                <f:format.date format="%d. %B %Y">{jobPosition.startDate}</f:format.date>
+            <!--<span class="bw-jobs-detail-box__value">
+                <f:format.date format="{settings.dateFormat}">{jobPosition.startDate}</f:format.date>
             </span>-->
         </div>
     </f:if>
 
-   <!-- <f:if condition="{jobPosition.datePosted}">
+    <!--<f:if condition="{jobPosition.datePosted}">
         <div class="bw-jobs-detail-box">
             <span class="bw-jobs-detail-box__label">
-                <f:translate key="date_posted"/>&#58;
+                <f:translate key="date_posted"/>
             </span>
             <span class="bw-jobs-detail-box__value">
-                <f:format.date format="%d. %B %Y">{jobPosition.datePosted}</f:format.date>
+                <f:format.date format="{settings.dateFormat}">{jobPosition.datePosted}</f:format.date>
             </span>
         </div>
-    </f:if> -->
+    </f:if>-->
 
-    <f:if condition="{jobPosition.validThroughDate}">
+    <!--<f:if condition="{jobPosition.validThroughDate}">
         <div class="bw-jobs-detail-box">
             <span class="bw-jobs-detail-box__label">
                 <f:translate key="valid_through_date"/>
             </span>
             <span class="bw-jobs-detail-box__value">
-                <f:format.date format="%d. %B %Y">{jobPosition.validThroughDate}</f:format.date>
+                <f:format.date format="{settings.dateFormat}">{jobPosition.validThroughDate}</f:format.date>
             </span>
         </div>
-    </f:if>
+    </f:if>-->
 
     <f:if condition="{jobPosition.categories} && {jobPosition.categoriesPublic}">
         <div class="bw-jobs-detail-box">
             <span class="bw-jobs-detail-box__label">
-                <f:translate key="categories"/>&#58;
+                <f:translate key="categories"/>&#058;
             </span>
             <span class="bw-jobs-detail-box__value">
                 <f:for as="category" each="{jobPosition.categories}" iteration="iterator">
